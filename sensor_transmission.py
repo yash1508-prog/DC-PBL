@@ -563,14 +563,18 @@ def run_simulation():
 
     # Sensor value
 
-    print("\n[STEP 1: SENSOR DATA ACQUISITION]")
+    print("\n[STEP 1: INDUSTRIAL IOT SENSOR DATA ACQUISITION]")
+    print("  Supported: Temperature (TEMP-01), Pressure (PRES-02), Humidity (HUM-03)")
+
+    sensor_id = "TEMP-01"
+    sensor_type = "TEMP"
 
     user_input = input(
-        "Enter Sensor Temperature (°C) [Default: 72]: "
+        "Enter Sensor Temperature (°C) [Default: 25]: "
     ).strip()
 
     if not user_input:
-        temp_original = 72
+        temp_original = 25
 
     else:
 
@@ -578,8 +582,11 @@ def run_simulation():
             temp_original = int(user_input)
 
         except ValueError:
-            print("Invalid input. Using default temperature: 72°C")
-            temp_original = 72
+            print("Invalid input. Using default temperature: 25°C")
+            temp_original = 25
+
+    sensor_packet = f"[{sensor_id}] | [{sensor_type}] | [{temp_original}°C]"
+    print(f"  -> Sensor Packet Formed  : {sensor_packet}")
 
 
     # Convert to binary
@@ -762,11 +769,19 @@ def run_simulation():
     )
 
     print(
+        f"Transmitted Packet     : [{sensor_id}] | [{sensor_type}] | [{temp_original}°C]"
+    )
+
+    print(
         f"Original Binary Stream : {bit_stream}"
     )
 
     print(
         f"Received Binary Stream : {rx_bits}"
+    )
+
+    print(
+        f"Recovered Packet       : [{sensor_id}] | [{sensor_type}] | [{temp_recovered}°C]"
     )
 
     print(
