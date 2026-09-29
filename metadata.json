@@ -1,0 +1,6 @@
+{
+  "name": "Industrial Sensor Line Encoding Simulator & PBL Kit",
+  "description": "Simulation and Python project for Industrial Sensor Data Transmission using Polar NRZ-L, Polar RZ, and Bipolar AMI Line Encoding with channel noise and decoding.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
